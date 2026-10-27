@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Process - Shree Saree Center</title>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+    <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: Arial, sans-serif; background: #fffdf7; padding: 20px; }
+    h2 { color: maroon; text-align: center;  margin-top: 60px; }
+    form { max-width: 600px; margin: 0 auto; background: #fdf4f4; padding: 20px; border-radius: 8px;  }
+    label { display: block; margin: 10px 0 5px; font-weight: bold; }
+    input, textarea, select { width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; }
+    button { background: #6A1B1A; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #800000; }
+  </style>
+</head>
+<body>
+
+    <nav class="navbar">
+  <div class="logo" style="  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease, transform 0.3s ease; /* smooth transition */
+  font-size: 1.4rem;">Shree Saree Center</div>
+  <div class="search-container">
+    <input type="text" placeholder="Search sarees..." class="search-input">
+    <button class="search-button"></button>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="saree.html">Sarees</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+   <li><a href="cart.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+    <li><a href=""><i class="fa fa-user" aria-hidden="true"></i></a></li>
+  </ul>
+</nav>
+<div id="selectedSaree" style="max-width:600px;margin:20px auto;background:#fff4f4;padding:15px;border-radius:8px; margin-top: 50px;">
+  <h3>Selected Saree</h3>
+  <div id="sareeDetails"></div>
+</div>
+
+<h2>Order Details</h2>
+<form id="orderForm">
+  <label for="name">Full Name</label>
+  <input type="text" id="name" required>
+
+  <label for="mobile">Mobile Number</label>
+  <input type="tel" id="mobile" required>
+
+  <label for="address">Full Address</label>
+  <textarea id="address" rows="3" required></textarea>
+
+  <label for="payment">Payment Method</label>
+  <select id="payment" required>
+    <option value="">-- Select Payment Method --</option>
+    <option value="COD">Cash on Delivery</option>
+    <option value="Online">Online Payment</option>
+  </select>
+
+  <button type="submit">Place Order</button>
+</form>
+
+<script>
+  document.getElementById('orderForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Customer details
+    const name = document.getElementById('name').value;
+    const mobile = document.getElementById('mobile').value;
+    const address = document.getElementById('address').value;
+    const payment = document.getElementById('payment').value;
+
+    // Cart data
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    if(cart.length === 0) {
+      alert("Your cart is empty!");
+      return;
+    }
+
+    // Save order data
+    const orderData = { name, mobile, address, payment, cart };
+    localStorage.setItem('orderData', JSON.stringify(orderData));
+
+    // Go to confirmation page
+    window.location.href = "order-success.html";
+  });
+  // पेज लोड झाल्यावर निवडलेली साडी दाखव
+const cart = JSON.parse(localStorage.getItem('cart')) || [];
+if(cart.length > 0){
+  document.getElementById('sareeDetails').innerHTML = `
+    <img src="${cart[0].image}" style="width:150px;border-radius:8px;margin-bottom:10px;">
+    <p><b>${cart[0].name}</b></p>
+    <p>Price: ₹${cart[0].price}</p>
+  `;
+} else {
+  document.getElementById('sareeDetails').innerHTML = `<p style="color:red;">No saree selected!</p>`;
+}
+
+</script>
+
+</body>
+</html>

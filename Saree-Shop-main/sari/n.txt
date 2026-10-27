@@ -1,0 +1,184 @@
+ const sareeData = {
+    // 1
+    paithani: [
+      { img: "images/paithani.jpg", name: "Paithani Saree 1" },
+      { img: "images/paithani.jpg", name: "Paithani Saree 2" },
+      { img: "images/paithani.jpg", name: "Paithani Saree 3" },
+      { img: "images/paithani.jpg", name: "Paithani Saree 4" },
+      { img: "images/paithani.jpg", name: "Paithani Saree 5" },
+      { img: "images/paithani.jpg", name: "Paithani Saree 6" }
+    ],
+    // 2
+    silk: [
+      { img: "images/silk.jpg", name: "Silk Saree 1" },
+      { img: "images/silk.jpg", name: "Silk Saree 2" },
+      { img: "images/silk.jpg", name: "Silk Saree 3" },
+      { img: "images/silk.jpg", name: "Silk Saree 4" },
+      { img: "images/silk.jpg", name: "Silk Saree 5" },
+      { img: "images/silk.jpg", name: "Silk Saree 6" }
+    ],
+    // 3
+    cotton: [
+      { img: "images/cotton.jpg", name: "Cotton Saree 1" },
+      { img: "images/cotton.jpg", name: "Cotton Saree 2" },
+      { img: "images/cotton.jpg", name: "Cotton Saree 3" },
+      { img: "images/cotton.jpg", name: "Cotton Saree 4" },
+      { img: "images/cotton.jpg", name: "Cotton Saree 5" },
+      { img: "images/cotton.jpg", name: "Cotton Saree 6" }
+    ],
+    // 4
+    kanjivaram: [
+      { img: "images/kanjivaram.jpg", name: "Kanjivaram Saree 1" },
+      { img: "images/kanjivaram.jpg", name: "Kanjivaram Saree 2" },
+      { img: "images/kanjivaram.jpg", name: "Kanjivaram Saree 3" },
+      { img: "images/kanjivaram.jpg", name: "Kanjivaram Saree 4" },
+      { img: "images/kanjivaram.jpg", name: "Kanjivaram Saree 5" },
+      { img: "images/kanjivaram.jpg", name: "Kanjivaram Saree 6" }
+    ],
+    // 5
+    banarasi: [
+      { img: "images/banarasi.jpg", name: "Banarasi Saree 1" },
+      { img: "images/banarasi.jpg", name: "Banarasi Saree 2" },
+      { img: "images/banarasi.jpg", name: "Banarasi Saree 3" },
+      { img: "images/banarasi.jpg", name: "Banarasi Saree 4" },
+      { img: "images/banarasi.jpg", name: "Banarasi Saree 5" },
+      { img: "images/banarasi.jpg", name: "Banarasi Saree 6" }
+    ],
+    // 6
+    chiffon: [
+      { img: "images/chiffon.jpg", name: "Chiffon Saree 1" },
+      { img: "images/chiffon.jpg", name: "Chiffon Saree 2" },
+      { img: "images/chiffon.jpg", name: "Chiffon Saree 3" },
+      { img: "images/chiffon.jpg", name: "Chiffon Saree 4" },
+      { img: "images/chiffon.jpg", name: "Chiffon Saree 5" },
+      { img: "images/chiffon.jpg", name: "Chiffon Saree 6" }
+    ],
+    // 7
+     georgette: [
+      { img: "images/georgette.jpg", name: "Paithani Saree 1" },
+      { img: "images/gergetteo.jpg", name: "Paithani Saree 2" },
+      { img: "images/gergetteo.jpg", name: "Paithani Saree 3" },
+      { img: "images/gergetteo.jpg", name: "Paithani Saree 4" },
+      { img: "images/gergetteo.jpg", name: "Paithani Saree 5" },
+      { img: "images/gergetteo.jpg", name: "Paithani Saree 6" }
+    ],
+    // 8
+    crepe: [
+      { img: "images/crepe.jpg", name: "Silk Saree 1" },
+      { img: "images/crepe.jpg", name: "Silk Saree 2" },
+      { img: "images/crepe.jpg", name: "Silk Saree 3" },
+      { img: "images/crepe.jpg", name: "Silk Saree 4" },
+      { img: "images/crepe.jpg", name: "Silk Saree 5" },
+      { img: "images/crepe.jpg", name: "Silk Saree 6" }
+    ],
+    // 9
+    net: [
+      { img: "images/net.jpg", name: "Cotton Saree 1" },
+      { img: "images/net.jpg", name: "Cotton Saree 2" },
+      { img: "images/net.jpg", name: "Cotton Saree 3" },
+      { img: "images/net.jpg", name: "Cotton Saree 4" },
+      { img: "images/net.jpg", name: "Cotton Saree 5" },
+      { img: "images/net.jpg", name: "Cotton Saree 6" }
+    ],
+    // 10
+    linen: [
+      { img: "images/linen.jpg", name: "Kanjivaram Saree 1" },
+      { img: "images/linen.jpg", name: "Kanjivaram Saree 2" },
+      { img: "images/linen.jpg", name: "Kanjivaram Saree 3" },
+      { img: "images/linen.jpg", name: "Kanjivaram Saree 4" },
+      { img: "images/linen.jpg", name: "Kanjivaram Saree 5" },
+      { img: "images/linen.jpg", name: "Kanjivaram Saree 6" }
+    ],
+    // 11
+    designer: [
+      { img: "images/designer.jpg", name: "Banarasi Saree 1" },
+      { img: "images/designer.jpg", name: "Banarasi Saree 2" },
+      { img: "images/designer.jpg", name: "Banarasi Saree 3" },
+      { img: "images/designer.jpg", name: "Banarasi Saree 4" },
+      { img: "images/designer.jpg", name: "Banarasi Saree 5" },
+      { img: "images/designer.jpg", name: "Banarasi Saree 6" }
+    ],
+    // 12
+    party_wear: [
+      { img: "images/party_wear.jpg", name: "Chiffon Saree 1" },
+      { img: "images/party_wear.jpg", name: "Chiffon Saree 2" },
+      { img: "images/party_wear.jpg", name: "Chiffon Saree 3" },
+      { img: "images/party_wear.jpg", name: "Chiffon Saree 4" },
+      { img: "images/party_wear.jpg", name: "Chiffon Saree 5" },
+      { img: "images/party_wear.jpg", name: "Chiffon Saree 6" }
+    ],
+    // 13
+     wedding: [
+      { img: "images/wedding.jpg", name: "Paithani Saree 1" },
+      { img: "images/wedding.jpg", name: "Paithani Saree 2" },
+      { img: "images/wedding.jpg", name: "Paithani Saree 3" },
+      { img: "images/wedding.jpg", name: "Paithani Saree 4" },
+      { img: "images/wedding.jpg", name: "Paithani Saree 5" },
+      { img: "images/wedding.jpg", name: "Paithani Saree 6" }
+    ],
+    // 14
+    printed: [
+      { img: "images/printed.jpg", name: "Silk Saree 1" },
+      { img: "images/printed.jpg", name: "Silk Saree 2" },
+      { img: "images/printed.jpg", name: "Silk Saree 3" },
+      { img: "images/printed.jpg", name: "Silk Saree 4" },
+      { img: "images/printed.jpg", name: "Silk Saree 5" },
+      { img: "images/printed.jpg", name: "Silk Saree 6" }
+    ],
+    // 15
+    embroidery: [
+      { img: "images/embroidery.jpg", name: "Cotton Saree 1" },
+      { img: "images/embroidery.jpg", name: "Cotton Saree 2" },
+      { img: "images/embroidery.jpg", name: "Cotton Saree 3" },
+      { img: "images/embroidery.jpg", name: "Cotton Saree 4" },
+      { img: "images/embroidery.jpg", name: "Cotton Saree 5" },
+      { img: "images/embroidery.jpg", name: "Cotton Saree 6" }
+    ],
+    // 16
+    half_half: [
+      { img: "images/halfhalf.jpg", name: "Kanjivaram Saree 1" },
+      { img: "images/halfhalf.jpg", name: "Kanjivaram Saree 2" },
+      { img: "images/halfhalf.jpg", name: "Kanjivaram Saree 3" },
+      { img: "images/halfhalf.jpg", name: "Kanjivaram Saree 4" },
+      { img: "images/halfhalf.jpg", name: "Kanjivaram Saree 5" },
+      { img: "images/halfhalf.jpg", name: "Kanjivaram Saree 6" }
+    ],
+    // 17
+ bridal: [
+      { img: "images/bridal.jpg", name: "Paithani Saree 1" },
+      { img: "images/bridal.jpg", name: "Paithani Saree 2" },
+      { img: "images/bridal.jpg", name: "Paithani Saree 3" },
+      { img: "images/bridal.jpg", name: "Paithani Saree 4" },
+      { img: "images/bridal.jpg", name: "Paithani Saree 5" },
+      { img: "images/bridal.jpg", name: "Paithani Saree 6" }
+    ],
+    // 18
+    daily_wear: [
+      { img: "images/daily.jpg", name: "Silk Saree 1" },
+      { img: "images/daily.jpg", name: "Silk Saree 2" },
+      { img: "images/daily.jpg", name: "Silk Saree 3" },
+      { img: "images/daily.jpg", name: "Silk Saree 4" },
+      { img: "images/daily.jpg", name: "Silk Saree 5" },
+      { img: "images/daily.jpg", name: "Silk Saree 6" }
+    ],
+    // 19
+    festive: [
+      { img: "images/festive.jpg", name: "Cotton Saree 1" },
+      { img: "images/festive.jpg", name: "Cotton Saree 2" },
+      { img: "images/festive.jpg", name: "Cotton Saree 3" },
+      { img: "images/festive.jpg", name: "Cotton Saree 4" },
+      { img: "images/festive.jpg", name: "Cotton Saree 5" },
+      { img: "images/festive.jpg", name: "Cotton Saree 6" }
+    ],
+    // 20
+    bollywood: [
+      { img: "images/bollywood.jpg", name: "Kanjivaram Saree 1" },
+      { img: "images/bollywood.jpg", name: "Kanjivaram Saree 2" },
+      { img: "images/bollywood.jpg", name: "Kanjivaram Saree 3" },
+      { img: "images/bollywood.jpg", name: "Kanjivaram Saree 4" },
+      { img: "images/bollywood.jpg", name: "Kanjivaram Saree 5" },
+      { img: "images/bollywood.jpg", name: "Kanjivaram Saree 6" }
+    ]
+   
+    // You can add more categories in the same way
+  };

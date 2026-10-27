@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Saree View</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .color-filter-label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  cursor: pointer;
+  gap: 10px;
+  user-select: none;
+}
+
+.color-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #aaa;
+  display: inline-block;
+}
+
+    body {font-family: Arial, sans-serif;margin: 0;padding: 0;background: #fff8f6;}
+   .main-container{
+    margin-top: 50px;
+   }
+    /* Layout */
+    .main-container {display: flex;}
+    .sidebar {width: 250px;background: #fff;padding: 25px; margin-top: 20px; border-right: 1px solid #ddd;}
+    .sidebar h3 {margin-bottom: 10px;color: maroon;}
+    .sidebar label {display: block;margin-bottom: 5px;cursor: pointer;}
+    /* Saree grid */
+    .saree-grid {display: flex;flex-wrap: wrap;gap: 20px;padding: 20px;justify-content: center;flex: 1;}
+    .saree-card {border: 1px solid #ccc;padding: 10px;width: 220px;text-align: center;background: white;border-radius: 8px;box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
+    .saree-card img {width: 100%;height: 200px;object-fit: cover;border-radius: 5px;}
+    .price {color: maroon;font-weight: bold;margin: 10px 0 5px;}
+    .old-price {text-decoration: line-through;color: gray;font-size: 0.9rem;}
+    .btn {background: maroon;color: white;border: none;padding: 8px 12px;margin: 5px;cursor: pointer;border-radius: 5px;font-size: 0.9rem;}
+    .btn:hover {background: #a30a0a;}
+    /* Footer */
+    .footer {background-color: #222;color: white;text-align: center;padding: 20px;margin-top: 30px;}
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="logo" style="  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease, transform 0.3s ease; /* smooth transition */
+  font-size: 1.4rem;">Shree Saree Center</div>
+  <div class="search-container">
+    <input type="text" placeholder="Search sarees..." class="search-input">
+    <button class="search-button"></button>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="saree.html">Sarees</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+   <li><a href="cart.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+    <li><a href=""><i class="fa fa-user" aria-hidden="true"></i></a></li>
+  </ul>
+</nav>
+
+
+<h2 id="saree-title">Saree Collection</h2>
+
+<div class="main-container">
+  <!-- Sidebar Filters -->
+  <div class="sidebar">
+   <h3>Filter by Color</h3>
+<label class="color-filter-label"><input type="checkbox" class="color-filter" value="Red"><span class="color-dot" style="background:red;"></span> Red</label>
+<label class="color-filter-label"><input type="checkbox" class="color-filter" value="Blue"><span class="color-dot" style="background:blue;"></span> Blue</label>
+<label class="color-filter-label"><input type="checkbox" class="color-filter" value="Green"><span class="color-dot" style="background:green;"></span> Green</label>
+<label class="color-filter-label"><input type="checkbox" class="color-filter" value="Yellow"><span class="color-dot" style="background:yellow; border:1px solid #ccc;"></span> Yellow</label>
+<label class="color-filter-label"><input type="checkbox" class="color-filter" value="Pink"><span class="color-dot" style="background:pink; border:1px solid #ccc;"></span> Pink</label>
+<label class="color-filter-label"><input type="checkbox" class="color-filter" value="Purple"><span class="color-dot" style="background:purple;"></span> Purple</label>
+<label class="color-filter-label"><input type="checkbox" class="color-filter" value="Orange"><span class="color-dot" style="background:orange;"></span> Orange</label>
+
+    <h3>Filter by Price</h3>
+    <label><input type="checkbox" class="price-filter" value="0-2000"> Below ₹2000</label>
+    <label><input type="checkbox" class="price-filter" value="2000-4000"> ₹2000 - ₹4000</label>
+    <label><input type="checkbox" class="price-filter" value="4000-6000"> Above ₹4000</label>
+<!-- 
+    <h3>Type</h3>
+    <label><input type="checkbox" class="type-filter" value="paithani"> Paithani</label>
+    <label><input type="checkbox" class="type-filter" value="silk"> Silk</label>
+    <label><input type="checkbox" class="type-filter" value="cotton"> Cotton</label>
+    <label><input type="checkbox" class="type-filter" value="banarasi"> Banarasi</label> -->
+  </div>
+
+  <!-- Saree Grid -->
+  <div class="saree-grid" id="saree-container"></div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>© 2025 Shree Saree Center | All Rights Reserved</p>
+  <p>📍 Main Road, Kolhapur | 📞 9876543210 | 📧 shreesaree@example.com</p>
+</footer>
+
+<script>
+  // function randomPrice() {
+  //   const price = Math.floor(Math.random() * (6000 - 1500) + 1500);
+  //   const oldPrice = price + Math.floor(Math.random() * 2000 + 500);
+  //   return { price: price, oldPrice: oldPrice };
+  // }
+
+  // Your sareeData (तुझं जसंच्या तसं)
+  const sareeData = {
+    // 1
+    paithani: [
+      { img: "images/paithani.jpg", name: "Paithani Saree 1" },
+      { img: "images/paithani.jpg", name: "Paithani Saree 2" },
+      { img: "images/paithani.jpg", name: "Paithani Saree 3" },
+      { img: "images/paithani.jpg", name: "Paithani Saree 4" },
+      { img: "images/paithani.jpg", name: "Paithani Saree 5" },
+      { img: "images/paithani.jpg", name: "Paithani Saree 6" }
+    ],
+    // 2
+    silk: [
+      { img: "images/silk.jpg", name: "Silk Saree 1" },
+      { img: "images/silk.jpg", name: "Silk Saree 2" },
+      { img: "images/silk.jpg", name: "Silk Saree 3" },
+      { img: "images/silk.jpg", name: "Silk Saree 4" },
+      { img: "images/silk.jpg", name: "Silk Saree 5" },
+      { img: "images/silk.jpg", name: "Silk Saree 6" }
+    ],
+    // 3
+    cotton: [
+      { img: "images/cotton.jpg", name: "Cotton Saree 1" },
+      { img: "images/cotton.jpg", name: "Cotton Saree 2" },
+      { img: "images/cotton.jpg", name: "Cotton Saree 3" },
+      { img: "images/cotton.jpg", name: "Cotton Saree 4" },
+      { img: "images/cotton.jpg", name: "Cotton Saree 5" },
+      { img: "images/cotton.jpg", name: "Cotton Saree 6" }
+    ],
+    // 4
+    kanjivaram: [
+      { img: "images/kanjivaram.jpg", name: "Kanjivaram Saree 1" },
+      { img: "images/kanjivaram.jpg", name: "Kanjivaram Saree 2" },
+      { img: "images/kanjivaram.jpg", name: "Kanjivaram Saree 3" },
+      { img: "images/kanjivaram.jpg", name: "Kanjivaram Saree 4" },
+      { img: "images/kanjivaram.jpg", name: "Kanjivaram Saree 5" },
+      { img: "images/kanjivaram.jpg", name: "Kanjivaram Saree 6" }
+    ],
+    // 5
+    banarasi: [
+      { img: "images/banarasi.jpg", name: "Banarasi Saree 1" },
+      { img: "images/banarasi.jpg", name: "Banarasi Saree 2" },
+      { img: "images/banarasi.jpg", name: "Banarasi Saree 3" },
+      { img: "images/banarasi.jpg", name: "Banarasi Saree 4" },
+      { img: "images/banarasi.jpg", name: "Banarasi Saree 5" },
+      { img: "images/banarasi.jpg", name: "Banarasi Saree 6" }
+    ],
+    // 6
+    chiffon: [
+      { img: "images/chiffon.jpg", name: "Chiffon Saree 1" },
+      { img: "images/chiffon.jpg", name: "Chiffon Saree 2" },
+      { img: "images/chiffon.jpg", name: "Chiffon Saree 3" },
+      { img: "images/chiffon.jpg", name: "Chiffon Saree 4" },
+      { img: "images/chiffon.jpg", name: "Chiffon Saree 5" },
+      { img: "images/chiffon.jpg", name: "Chiffon Saree 6" }
+    ],
+    // 7
+     georgette: [
+      { img: "images/georgette.jpg", name: "Paithani Saree 1" },
+      { img: "images/gergetteo.jpg", name: "Paithani Saree 2" },
+      { img: "images/gergetteo.jpg", name: "Paithani Saree 3" },
+      { img: "images/gergetteo.jpg", name: "Paithani Saree 4" },
+      { img: "images/gergetteo.jpg", name: "Paithani Saree 5" },
+      { img: "images/gergetteo.jpg", name: "Paithani Saree 6" }
+    ],
+    // 8
+    crepe: [
+      { img: "images/crepe.jpg", name: "Silk Saree 1" },
+      { img: "images/crepe.jpg", name: "Silk Saree 2" },
+      { img: "images/crepe.jpg", name: "Silk Saree 3" },
+      { img: "images/crepe.jpg", name: "Silk Saree 4" },
+      { img: "images/crepe.jpg", name: "Silk Saree 5" },
+      { img: "images/crepe.jpg", name: "Silk Saree 6" }
+    ],
+    // 9
+    net: [
+      { img: "images/net.jpg", name: "Cotton Saree 1" },
+      { img: "images/net.jpg", name: "Cotton Saree 2" },
+      { img: "images/net.jpg", name: "Cotton Saree 3" },
+      { img: "images/net.jpg", name: "Cotton Saree 4" },
+      { img: "images/net.jpg", name: "Cotton Saree 5" },
+      { img: "images/net.jpg", name: "Cotton Saree 6" }
+    ],
+    // 10
+    linen: [
+      { img: "images/linen.jpg", name: "Kanjivaram Saree 1" },
+      { img: "images/linen.jpg", name: "Kanjivaram Saree 2" },
+      { img: "images/linen.jpg", name: "Kanjivaram Saree 3" },
+      { img: "images/linen.jpg", name: "Kanjivaram Saree 4" },
+      { img: "images/linen.jpg", name: "Kanjivaram Saree 5" },
+      { img: "images/linen.jpg", name: "Kanjivaram Saree 6" }
+    ],
+    // 11
+    designer: [
+      { img: "images/designer.jpg", name: "Banarasi Saree 1" },
+      { img: "images/designer.jpg", name: "Banarasi Saree 2" },
+      { img: "images/designer.jpg", name: "Banarasi Saree 3" },
+      { img: "images/designer.jpg", name: "Banarasi Saree 4" },
+      { img: "images/designer.jpg", name: "Banarasi Saree 5" },
+      { img: "images/designer.jpg", name: "Banarasi Saree 6" }
+    ],
+    // 12
+    party_wear: [
+      { img: "images/party_wear.jpg", name: "Chiffon Saree 1" },
+      { img: "images/party_wear.jpg", name: "Chiffon Saree 2" },
+      { img: "images/party_wear.jpg", name: "Chiffon Saree 3" },
+      { img: "images/party_wear.jpg", name: "Chiffon Saree 4" },
+      { img: "images/party_wear.jpg", name: "Chiffon Saree 5" },
+      { img: "images/party_wear.jpg", name: "Chiffon Saree 6" }
+    ],
+    // 13
+     wedding: [
+      { img: "images/wedding.jpg", name: "Paithani Saree 1" },
+      { img: "images/wedding.jpg", name: "Paithani Saree 2" },
+      { img: "images/wedding.jpg", name: "Paithani Saree 3" },
+      { img: "images/wedding.jpg", name: "Paithani Saree 4" },
+      { img: "images/wedding.jpg", name: "Paithani Saree 5" },
+      { img: "images/wedding.jpg", name: "Paithani Saree 6" }
+    ],
+    // 14
+    printed: [
+      { img: "images/printed.jpg", name: "Silk Saree 1" },
+      { img: "images/printed.jpg", name: "Silk Saree 2" },
+      { img: "images/printed.jpg", name: "Silk Saree 3" },
+      { img: "images/printed.jpg", name: "Silk Saree 4" },
+      { img: "images/printed.jpg", name: "Silk Saree 5" },
+      { img: "images/printed.jpg", name: "Silk Saree 6" }
+    ],
+    // 15
+    embroidery: [
+      { img: "images/embroidery.jpg", name: "Cotton Saree 1" },
+      { img: "images/embroidery.jpg", name: "Cotton Saree 2" },
+      { img: "images/embroidery.jpg", name: "Cotton Saree 3" },
+      { img: "images/embroidery.jpg", name: "Cotton Saree 4" },
+      { img: "images/embroidery.jpg", name: "Cotton Saree 5" },
+      { img: "images/embroidery.jpg", name: "Cotton Saree 6" }
+    ],
+    // 16
+    half_half: [
+      { img: "images/halfhalf.jpg", name: "Kanjivaram Saree 1" },
+      { img: "images/halfhalf.jpg", name: "Kanjivaram Saree 2" },
+      { img: "images/halfhalf.jpg", name: "Kanjivaram Saree 3" },
+      { img: "images/halfhalf.jpg", name: "Kanjivaram Saree 4" },
+      { img: "images/halfhalf.jpg", name: "Kanjivaram Saree 5" },
+      { img: "images/halfhalf.jpg", name: "Kanjivaram Saree 6" }
+    ],
+    // 17
+ bridal: [
+      { img: "images/bridal.jpg", name: "Paithani Saree 1" },
+      { img: "images/bridal.jpg", name: "Paithani Saree 2" },
+      { img: "images/bridal.jpg", name: "Paithani Saree 3" },
+      { img: "images/bridal.jpg", name: "Paithani Saree 4" },
+      { img: "images/bridal.jpg", name: "Paithani Saree 5" },
+      { img: "images/bridal.jpg", name: "Paithani Saree 6" }
+    ],
+    // 18
+    daily_wear: [
+      { img: "images/daily.jpg", name: "Silk Saree 1" },
+      { img: "images/daily.jpg", name: "Silk Saree 2" },
+      { img: "images/daily.jpg", name: "Silk Saree 3" },
+      { img: "images/daily.jpg", name: "Silk Saree 4" },
+      { img: "images/daily.jpg", name: "Silk Saree 5" },
+      { img: "images/daily.jpg", name: "Silk Saree 6" }
+    ],
+    // 19
+    festive: [
+      { img: "images/festive.jpg", name: "Cotton Saree 1" },
+      { img: "images/festive.jpg", name: "Cotton Saree 2" },
+      { img: "images/festive.jpg", name: "Cotton Saree 3" },
+      { img: "images/festive.jpg", name: "Cotton Saree 4" },
+      { img: "images/festive.jpg", name: "Cotton Saree 5" },
+      { img: "images/festive.jpg", name: "Cotton Saree 6" }
+    ],
+    // 20
+    bollywood: [
+      { img: "images/bollywood.jpg", name: "Kanjivaram Saree 1" },
+      { img: "images/bollywood.jpg", name: "Kanjivaram Saree 2" },
+      { img: "images/bollywood.jpg", name: "Kanjivaram Saree 3" },
+      { img: "images/bollywood.jpg", name: "Kanjivaram Saree 4" },
+      { img: "images/bollywood.jpg", name: "Kanjivaram Saree 5" },
+      { img: "images/bollywood.jpg", name: "Kanjivaram Saree 6" }
+    ]
+   
+    // You can add more categories in the same way
+  };
+
+  function buyNow(name, type) {
+  // type आणि name URL मध्ये encode करून details.html वर पाठवतोय
+  window.location.href = `details.html?type=${encodeURIComponent(type)}&name=${encodeURIComponent(name)}`;
+}
+
+
+  // Convert nested to single array
+   function randomPrice() {
+    const price = Math.floor(Math.random() * (6000 - 1500) + 1500);
+    const oldPrice = price + Math.floor(Math.random() * 2000 + 500);
+    return { price: price, oldPrice: oldPrice };
+  }
+
+  // सगळे sarees एकत्र array मध्ये (color/type सोपं करण्यासाठी)
+  let allSarees = [];
+  for (const [type, items] of Object.entries(sareeData)) {
+    allSarees = allSarees.concat(items.map(s => {
+      const prices = randomPrice();
+      // Random color assign (तू हवं तर real color property देऊ शकतोस)
+      const colors = ["Red", "Blue", "Green", "Yellow", "Pink", "Purple", "Orange"];
+
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      return { ...s, type: type, color: color, price: prices.price, oldPrice: prices.oldPrice };
+    }));
+  }
+
+  const container = document.getElementById("saree-container");
+  const sareeTitle = document.getElementById("saree-title");
+
+  // URL मधून type घेणे (उदा. view_saree.html?type=silk)
+  const urlParams = new URLSearchParams(window.location.search);
+  const sareeType = urlParams.get("type") || "paithani";
+
+  // Page title अपडेट
+  sareeTitle.innerText = sareeType.charAt(0).toUpperCase() + sareeType.slice(1) + " Sarees";
+
+  // त्या type चे sarees
+  let selectedSarees = allSarees.filter(s => s.type === sareeType);
+
+function renderSarees(data) {
+  container.innerHTML = "";
+  if (!data.length) {
+    container.innerHTML = "<p>No sarees found.</p>";
+    return;
+  }
+  data.forEach(s => {
+    container.innerHTML += `
+      <div class="saree-card">
+        <img src="${s.img}" alt="${s.name}">
+        <p><strong>${s.name}</strong></p>
+        <p class="price">₹${s.price} <span class="old-price">₹${s.oldPrice}</span></p>
+        <button class="btn" onclick="addToCart('${s.name}', ${s.price}, '${s.img}')">Add to Cart</button>
+        <button class="btn" onclick="buyNow('${s.name}','${s.type}')">Buy Now</button>
+      </div>
+    `;
+  });
+}
+
+  renderSarees(selectedSarees);
+
+  document.querySelectorAll(".color-filter, .price-filter, .type-filter").forEach(cb => {
+    cb.addEventListener("change", applyFilters);
+  });
+
+  function applyFilters() {
+    const colors = [...document.querySelectorAll(".color-filter:checked")].map(cb => cb.value);
+    const prices = [...document.querySelectorAll(".price-filter:checked")].map(cb => cb.value);
+    const types = [...document.querySelectorAll(".type-filter:checked")].map(cb => cb.value);
+
+    let filtered = selectedSarees.filter(s => {
+      const colorMatch = colors.length ? colors.includes(s.color) : true;
+      const typeMatch = types.length ? types.includes(s.type) : true;
+      const priceMatch = prices.length ? prices.some(r => {
+        const [min, max] = r.split("-").map(Number);
+        return s.price >= min && (max ? s.price <= max : true);
+      }) : true;
+      return colorMatch && typeMatch && priceMatch;
+    });
+    renderSarees(filtered);
+  }
+
+function addToCart(name, price, image) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    // Check if item already exists
+    let existing = cart.find(item => item.name === name);
+    if (existing) {
+        existing.qty += 1;
+    } else {
+        cart.push({ name: name, price: price, image: image, qty: 1 });
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert("Added to cart!");
+    window.location.href = "cart.html"; // Direct cart ला जाण्यासाठी
+}
+
+  </script>
+
+</body>
+</html>
